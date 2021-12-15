@@ -1,37 +1,46 @@
 import React, { createContext } from 'react';
-import uuid from 'uuid/v4';
-
 
 export const playerContext = createContext();
 
-const playerContextProvider = ({ children }) => {
+
+const PlayerContextProvider = ({ children }) => {
    const [player, setPlayer] = React.useState([
       {
          playerName: 'Cristiano Ronaldo',
          club: 'Manchester United',
          position: 'Forward',
-         id: uuid()
+         id: 1,
       },
       {
          playerName: 'Lionel Messi',
          club: 'Paris Saint-Germain',
          position: 'forward',
-         id:uuid()
+         id: 2,
       },
       {
          playerName: 'Neymar',
          club: 'Paris Saint-Germain',
          position: 'wiger',
-         id:uuid()
-      }
+         id:3,
+      },
    ]);
 
-   const addPlayer = (playerName,club,position) => {
-      setPlayer([...player,{playerName,club,position,id:uuid()}]);
-   }
 
-   return(<div></div>)
+   const addPlayer = (playerName, club, position) => {
+      setPlayer([...player, { playerName, club, position, id: player.length + 1 }]);
+   };
 
+   const removePlayer = (id) => {
+      console.log(id);
+      setPlayer(player.filter((player) => player.id !== id));
+   };
+   return (
+      <playerContext.Provider value={{ player, addPlayer, removePlayer }}>
+         {children}
+      </playerContext.Provider>
+   );
 };
 
-export default playerContextProvider;
+console.log(playerContext)
+
+export default PlayerContextProvider;

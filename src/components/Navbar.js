@@ -1,38 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { playerContext } from '../contexts/PlayerContext';
 
 const Navbar = () => {
+   const { player, addPlayer, removePlayer } = useContext(playerContext);
+
    return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-         <div className="container-fluid">
-            <a className="navbar-brand" href="*">
-               Navbar
-            </a>
-            <button
-               className="navbar-toggler"
-               type="button"
-               data-bs-toggle="collapse"
-               data-bs-target="#navbarNavAltMarkup"
-               aria-controls="navbarNavAltMarkup"
-               aria-expanded="false"
-               aria-label="Toggle navigation"
-            >
-               <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-               <div className="navbar-nav">
-                  <a className="nav-link active" aria-current="page" href="*">
-                     Home
-                  </a>
-                  <a className="nav-link" href="*">
-                     Features
-                  </a>
-                  <a className="nav-link" href="*">
-                     Pricing
-                  </a>
-                  <a className="nav-link disabled">Disabled</a>
-               </div>
-            </div>
-         </div>
+      <nav className="bg-blue-400 flex gap-4 justify-between items-center px-10 py-2">
+         <h1 className="text-base md:text-4xl font-bold font-mono text-yellow-200 first-letter:italic first-letter:text-2xl md:first-letter:text-5xl first-letter:text-pink-300 shadow-pink-300">
+            Rayzordev
+         </h1>
+
+         <h5 className="italic text-yellow-200 text-xs text-center md:text-sm bg-pink-600 px-2 rounded-lg py-1">
+            Player on the list{' '}
+            <span className="not-italic font-bold">({player.length})</span>
+         </h5>
       </nav>
    );
 };
