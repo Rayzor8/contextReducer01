@@ -1,15 +1,20 @@
+import Loader from './components/Loader';
 import PlayerContextProvider from './contexts/PlayerContext';
-import Navbar from './components/Navbar';
-import PlayerDetails from './components/PlayerDetails';
+import React, { lazy, Suspense, useEffect } from 'react';
+
+const NavbarComponent = lazy(() => import('./components/Navbar'));
+const PlayerDetails = lazy(() => import('./components/PlayerDetails'));
 
 function App() {
    return (
-      <div className="App font-mono bg-slate-200 w-full min-h-screen">
-         <PlayerContextProvider>
-            <Navbar />
-            <PlayerDetails/>
-         </PlayerContextProvider>
-      </div>
+      <Suspense fallback={Loader()}>
+         <div className="App font-mono bg-slate-200 w-full min-h-screen">
+            <PlayerContextProvider>
+               <NavbarComponent />
+               <PlayerDetails />
+            </PlayerContextProvider>
+         </div>
+      </Suspense>
    );
 }
 

@@ -41,6 +41,6 @@ const PlayerContextProvider = ({ children }) => {
    );
 };
 
-console.log(playerContext)
+
 
 export default PlayerContextProvider;
