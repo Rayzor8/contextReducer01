@@ -1,9 +1,9 @@
 import Loader from './components/Loader';
 import PlayerContextProvider from './contexts/PlayerContext';
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense} from 'react';
 
 const NavbarComponent = lazy(() => import('./components/Navbar'));
-const PlayerDetails = lazy(() => import('./components/PlayerDetails'));
+const PlayerList= lazy(() => import('./components/PlayerList'));
 
 function App() {
    return (
@@ -11,7 +11,7 @@ function App() {
          <div className="App font-mono bg-slate-200 w-full min-h-screen">
             <PlayerContextProvider>
                <NavbarComponent />
-               <PlayerDetails />
+               <PlayerList />
             </PlayerContextProvider>
          </div>
       </Suspense>
