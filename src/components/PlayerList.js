@@ -5,7 +5,6 @@ import PlayerDetails from './PlayerDetails';
 
 const PlayerList = () => {
    const { player } = useContext(playerContext);
-   console.log(player);
    return (
       <div className="mt-4">
          {player && player.length ? (
@@ -15,7 +14,9 @@ const PlayerList = () => {
                ))}
             </ul>
          ) : (
-            <h1>Books is empty</h1>
+            <h1 className="text-center text-clip my-10 text-2xl md:text-4xl font-bold text-pink-600">
+               Books is empty
+            </h1>
          )}
       </div>
    );
