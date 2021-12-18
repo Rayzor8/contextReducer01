@@ -1,10 +1,10 @@
 import React from 'react';
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState } from 'react';
 import { playerContext } from '../contexts/PlayerContext';
 
 const PlayerInputForm = () => {
    const { addPlayer } = useContext(playerContext);
-
+   const [alert, setAlert] = useState(false);
    const [formData, setFormData] = useState({
       playerName: '',
       club: '',
@@ -14,8 +14,17 @@ const PlayerInputForm = () => {
    const handleSubmit = (e) => {
       e.preventDefault();
       const { playerName, club, position } = formData;
-      addPlayer(playerName, club, position);
-      setFormData({ playerName: '', club: '', position: '' });
+
+      if (playerName && club && position) {
+         addPlayer(playerName, club, position);
+         setFormData({ playerName: '', club: '', position: '' });
+         setAlert(false);
+      } else {
+         setAlert(true);
+         setTimeout(() => {
+            setAlert(false);
+         }, 2000);
+      }
    };
 
    return (
@@ -23,6 +32,12 @@ const PlayerInputForm = () => {
          className="my-10 mx-4 py-6 md:mx-20 lg:mx-80 bg-pink-600 px-4 rounded-lg flex flex-col gap-2"
          onSubmit={handleSubmit}
       >
+         {alert && (
+            <p className="text-yellow-200 text-center font-bold mb-2">
+               Please fill the input fields!!
+            </p>
+         )}
+
          <div className="flex gap-1 flex-col">
             <label htmlFor="player" className="text-white font-bold">
                Player name
