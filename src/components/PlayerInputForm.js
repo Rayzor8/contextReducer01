@@ -30,7 +30,7 @@ const PlayerInputForm = () => {
 
    return (
       <form
-         className="my-10 mx-4 py-6 md:mx-20 lg:mx-80 bg-pink-600 px-4 md:px-10  rounded-lg flex flex-col gap-2"
+         className="my-10 mx-4 py-6 md:mx-20 lg:mx-80 bg-gray-900  px-4 md:px-10  rounded-lg flex flex-col gap-2"
          onSubmit={handleSubmit}
       >
          {alert && (

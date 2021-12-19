@@ -5,7 +5,7 @@ const Navbar = () => {
    const { player } = useContext(playerContext);
 
    return (
-      <nav className="bg-blue-400 flex gap-4 justify-between items-center px-10 py-2">
+      <nav className="bg-gray-900 flex gap-4 justify-between items-center px-10 py-2">
          <h1 className="text-base md:text-4xl font-bold font-mono text-yellow-200 first-letter:italic first-letter:text-2xl md:first-letter:text-5xl first-letter:text-pink-300 shadow-pink-300">
             Rayzordev
          </h1>

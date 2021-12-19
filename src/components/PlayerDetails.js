@@ -16,7 +16,7 @@ const PlayerDetails = ({ el }) => {
          >
             Delete
          </button>
-         <h1 className="text-xl md:text-2xl text-pink-600 font-bold">
+         <h1 className="text-xl md:text-2xl text-gray-900 font-bold">
             {el.playerName}
          </h1>
          <div className="mt-4">
