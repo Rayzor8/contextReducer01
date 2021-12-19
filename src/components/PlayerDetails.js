@@ -1,14 +1,11 @@
 import React from 'react';
-import { useContext } from 'react/cjs/react.development';
-import { playerContext } from '../contexts/PlayerContext';
+import DeleteModals from './modals/DeleteModals';
 
-const PlayerDetails = ({ el }) => {
-   const { dispatch } = useContext(playerContext);
+const PlayerDetails = ({ el}) => {
+   const [showModal, setShowModal] = React.useState(false);
 
    const handleDelete = () => {
-      if(window.confirm('Are you sure you want to delete this player?')){
-         dispatch({ type: 'REMOVE_PLAYER', id: el.id })
-      }
+      setShowModal(true)
    }
 
    return (
@@ -16,7 +13,7 @@ const PlayerDetails = ({ el }) => {
          <button
             className="absolute top-0 right-0 bg-pink-600 px-2 py-2 text-xs md:text-sm italic text-white hover:bg-pink-600 transition duration-200"
             onClick={handleDelete}
-         >
+            >
             Delete
          </button>
          <h1 className="text-xl md:text-2xl text-pink-600 font-bold">
@@ -27,6 +24,7 @@ const PlayerDetails = ({ el }) => {
             <p>Club: {el.club}</p>
             <p>Position: {el.position}</p>
          </div>
+            {showModal && <DeleteModals el={el} setShowModal={setShowModal}/>}
       </li>
    );
 };
