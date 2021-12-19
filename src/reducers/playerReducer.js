@@ -1,7 +1,6 @@
+import { v4 as uuid } from 'uuid';
 
 export const playerReducer = (state, action) => {
-   console.log(state)
-   console.log(action);
    switch (action.type) {
       case 'ADD_PLAYER':
          return [
@@ -10,7 +9,7 @@ export const playerReducer = (state, action) => {
                playerName: action.player.playerName,
                club: action.player.club,
                position: action.player.position,
-               id: state.length + 1,
+               id: uuid(),
             },
          ];
 

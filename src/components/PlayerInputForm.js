@@ -11,6 +11,7 @@ const PlayerInputForm = () => {
       position: '',
    });
 
+
    const handleSubmit = (e) => {
       e.preventDefault();
       const { playerName, club, position } = formData;
