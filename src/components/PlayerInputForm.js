@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { playerContext } from '../contexts/PlayerContext';
 
 const PlayerInputForm = () => {
-   const { addPlayer } = useContext(playerContext);
+   const { dispatch} = useContext(playerContext);
    const [alert, setAlert] = useState(false);
    const [formData, setFormData] = useState({
       playerName: '',
@@ -16,7 +16,7 @@ const PlayerInputForm = () => {
       const { playerName, club, position } = formData;
 
       if (playerName && club && position) {
-         addPlayer(playerName, club, position);
+         dispatch({type: 'ADD_PLAYER', player:{playerName, club, position}});
          setFormData({ playerName: '', club: '', position: '' });
          setAlert(false);
       } else {
@@ -29,7 +29,7 @@ const PlayerInputForm = () => {
 
    return (
       <form
-         className="my-10 mx-4 py-6 md:mx-20 lg:mx-80 bg-pink-600 px-4 rounded-lg flex flex-col gap-2"
+         className="my-10 mx-4 py-6 md:mx-20 lg:mx-80 bg-pink-600 px-4 md:px-10  rounded-lg flex flex-col gap-2"
          onSubmit={handleSubmit}
       >
          {alert && (

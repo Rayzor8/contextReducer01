@@ -1,10 +1,10 @@
-import React, { createContext } from 'react';
-
+import React, { createContext ,useReducer} from 'react';
+import { playerReducer } from '../reducers/playerReducer';
 export const playerContext = createContext();
 
 
 const PlayerContextProvider = ({ children }) => {
-   const [player, setPlayer] = React.useState([
+   const [player, dispatch] = useReducer(playerReducer,[
       {
          playerName: 'Cristiano Ronaldo',
          club: 'Manchester United',
@@ -25,17 +25,8 @@ const PlayerContextProvider = ({ children }) => {
       },
    ]);
 
-
-   const addPlayer = (playerName, club, position) => {
-      setPlayer([...player, { playerName, club, position, id: player.length + 1 }]);
-   };
-
-   const removePlayer = (id) => {
-      console.log(id);
-      setPlayer(player.filter((player) => player.id !== id));
-   };
    return (
-      <playerContext.Provider value={{ player, addPlayer, removePlayer }}>
+      <playerContext.Provider value={{ player ,dispatch}}>
          {children}
       </playerContext.Provider>
    );
